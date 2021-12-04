@@ -16,7 +16,7 @@ Future<void> part01() async {
     }
   }
 
-  print('D01 P01: $increments'); // Correct answer: 1665
+  assert(increments == 1665);
 }
 
 Future<void> part02() async {
@@ -32,5 +32,5 @@ Future<void> part02() async {
     }
   }
 
-  print('D01 P02: $increments'); // Correct answer: 1702
+  assert(increments == 1702);
 }

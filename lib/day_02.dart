@@ -29,7 +29,7 @@ Future<void> part01() async {
 
   final res = horizontal * depth;
 
-  print('D02 P01: $res'); // Correct answer: 2073315
+  assert(res == 2073315);
 }
 
 Future<void> part02() async {
@@ -58,5 +58,5 @@ Future<void> part02() async {
 
   final res = horizontal * depth;
 
-  print('D02 P02: $res'); // Correct answer: 1840311528
+  assert(res == 1840311528);
 }
