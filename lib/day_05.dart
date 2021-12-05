@@ -9,7 +9,6 @@ void main() async {
 Future<void> part01() async {
   final input = await readFile('05');
 
-  var vents = <Vent>[];
   var coordinates = <Coordinate>[];
 
   for (var entry in input) {
@@ -20,21 +19,29 @@ Future<void> part01() async {
 
     if (x1 == x2) {
       for (var i = min(y1, y2); i <= max(y1, y2); i++) {
-        coordinates.add(Coordinate(x1, i));
+        final c = Coordinate(x1, i);
+        if (coordinates.contains(c)) {
+          coordinates.firstWhere((e) => e == c).count++;
+        } else {
+          coordinates.add(c);
+        }
       }
     }
     if (y1 == y2) {
       for (var i = min(x1, x2); i <= max(x1, x2); i++) {
-        coordinates.add(Coordinate(i, y1));
+        final c = Coordinate(i, y1);
+        if (coordinates.contains(c)) {
+          coordinates.firstWhere((e) => e == c).count++;
+        } else {
+          coordinates.add(c);
+        }
       }
     }
-
-    vents.add(Vent(coordinates));
   }
 
-  final coordinatesAsSet = coordinates.toSet().toList();
+  final res = coordinates.where((e) => e.count >= 2).length;
 
-  print(coordinates.length - coordinatesAsSet.length);
+  assert(res == 4728);
 }
 
 class Vent {
@@ -47,7 +54,9 @@ class Coordinate {
   final int x;
   final int y;
 
-  const Coordinate(this.x, this.y);
+  int count = 1;
+
+  Coordinate(this.x, this.y);
 
   @override
   bool operator ==(covariant Coordinate other) {
