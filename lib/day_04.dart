@@ -16,7 +16,7 @@ Future<List<Board>> boardsAfterBingoSession() async {
   final draws = input.first.split(',').map((e) => int.parse(e));
   final boards = input.skip(1).map((e) => Board.fromInput(e)).toList();
 
-  int bingoCount = 0;
+  var bingoCount = 0;
 
   for (var draw in draws) {
     for (var board in boards) {

@@ -1,8 +1,8 @@
 import 'reader.dart';
 
 void main() async {
-  part01();
-  part02();
+  await part01();
+  await part02();
 }
 
 Future<void> part01() async {
